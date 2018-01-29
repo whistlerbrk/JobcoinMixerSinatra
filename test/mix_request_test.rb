@@ -4,7 +4,13 @@ def create_request
   MixRequest.create(distribution_addresses: [SecureRandom.hex, SecureRandom.hex, SecureRandom.hex])
 end
 
-class MixRequestTest < MiniTest::Test
+class MixRequestTest < Test::Unit::TestCase
+
+  include Rack::Test::Methods
+
+  def app
+    Sinatra::Application
+  end
 
   def setup
     MixRequest.destroy_all
@@ -15,19 +21,19 @@ class MixRequestTest < MiniTest::Test
     end
   end
 
-  def deposits_are_received
+  def test_deposits_are_received
     MixRequest.await_deposits
     assert_equal(@requests.count, MixRequest.where(status: :received).count)
   end
 
-  def deposits_are_transferred_to_the_house_account
+  def test_deposits_are_transferred_to_the_house_account
     MixRequest.await_deposits
     MixRequest.transfer_deposits
 
     assert_equal(@requests.count, MixRequest.where(status: :transferred).count)
   end
 
-  def deposits_are_not_disbursed_until_threshold_is_met
+  def test_deposits_are_not_disbursed_until_threshold_is_met
     MixRequest.await_deposits
     MixRequest.transfer_deposits
     MixRequest.disburse_deposits

@@ -9,4 +9,8 @@ gem 'sqlite3'
 gem 'rake'
 gem 'concurrent-ruby'
 gem 'json'
+
+# test
 gem 'pry'
+gem 'rack-test'
+gem 'test-unit'

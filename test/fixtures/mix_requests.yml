@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+waiting:
+  deposit_address: <%= SecureRandom.hex %>
+  distribution_addresses:
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+  status: 0
+
+received:
+  deposit_address: <%= SecureRandom.hex %>
+  distribution_addresses:
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+  deposit_amount: "10.0"
+  status: 1
+
+transferred:
+  deposit_address: <%= SecureRandom.hex %>
+  distribution_addresses:
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+  deposit_amount: "20.0"
+  status: 2
+
+distributed:
+  deposit_address: <%= SecureRandom.hex %>
+  distribution_addresses:
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+    - <%= SecureRandom.hex %>
+  deposit_amount: "30.0"
+  status: 3

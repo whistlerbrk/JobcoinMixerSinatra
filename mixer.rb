@@ -3,7 +3,7 @@ require "sinatra/activerecord"
 require "./jobcoin_api"
 require "./mix_request"
 
-db = ENV['APP_ENV'] == 'test' ? 'mixer-test.sqlite3' : "mixer.sqlite3"
+db = ENV['RACK_ENV'] == 'test' ? 'mixer-test.sqlite3' : "mixer.sqlite3"
 set :database, { adapter: "sqlite3", database: db }
 
 get '/' do

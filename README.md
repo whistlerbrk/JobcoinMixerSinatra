@@ -20,9 +20,9 @@ run bundler to install gem dependencies:
 
 Initialize the DB, SQLite for this demo:
 
-`rake db:create`
+`bundle exec rake db:create`
 
-`rake db:schema:load`
+`bundle exec rake db:schema:load`
 
 The app has two processes, a scheduler and the web app, you can launch both with:
 
@@ -42,4 +42,8 @@ And the scheduler:
 
 To run the tests:
 
-`rake`
+`bundle exec rake db:create RACK_ENV=test`
+
+`bundle exec rake db:schema:load RACK_ENV=test`
+
+and run the files individually:
